@@ -4,6 +4,7 @@ import me.xenodev.tmbbl.commands.lobby.BuildCMD;
 import me.xenodev.tmbbl.commands.lobby.SpawnCMD;
 import me.xenodev.tmbbl.commands.player.OnlinezeitCMD;
 import me.xenodev.tmbbl.commands.player.StatsCMD;
+import me.xenodev.tmbbl.commands.specialevents.winter.EasterCMD;
 import me.xenodev.tmbbl.events.lobby.*;
 import me.xenodev.tmbbl.events.navigator.NavigatorEvent;
 import me.xenodev.tmbbl.events.player.JoinEvent;
