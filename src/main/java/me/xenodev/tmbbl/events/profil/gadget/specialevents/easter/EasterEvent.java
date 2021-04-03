@@ -42,11 +42,15 @@ public class EasterEvent implements Listener {
         Block block = e.getHitBlock();
         Chunk chunks = block.getChunk();
         Location location = block.getLocation();
-        Material material = block.getType();
+        Material material = e.getHitBlock().getType();
 
         if(entity instanceof Egg){
-
-            block.setType(Material.BLACK_CONCRETE);
+            Bukkit.getScheduler().runTaskLater(Main.instance, new Runnable() {
+                @Override
+                public void run() {
+                    block.setType(Material.BLACK_CONCRETE);
+                }
+            }, 1);
             Main.instance.getServer().getWorld("world").playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 10f, 10f);
 
             Bukkit.getScheduler().runTaskLater(Main.instance, new Runnable() {
@@ -54,7 +58,7 @@ public class EasterEvent implements Listener {
                 public void run() {
                     block.setType(material);
                 }
-            }, 20*10);
+            }, 20*3);
         }
     }
 }
