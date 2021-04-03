@@ -1,0 +1,22 @@
+name: TMBBetterLobby
+version: 5.6
+author: XenoDEV
+api-version: 1.16
+
+main: me.xenodev.tmbbl.main.Main
+
+commands:
+  oz:
+    description: Schaue die Onlinezeit eines Spielers an
+  ot:
+    description: Schaue die Onlinezeit eines Spielers an
+  onlinezeit:
+    description: Schaue die Onlinezeit eines Spielers an
+  onlinetime:
+    description: Schaue die Onlinezeit eines Spielers an
+  build:
+    description: Baue in der Lobby
+  spawn:
+    description: Teleportiere dich zum Spawn
+  stats:
+    description: Schaue die Stats eines Spielers an
