@@ -45,6 +45,7 @@ public class EasterEvent implements Listener {
         Material material = block.getType();
 
         if(entity instanceof Egg){
+
             block.setType(Material.BLACK_CONCRETE);
             Main.instance.getServer().getWorld("world").playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 10f, 10f);
 

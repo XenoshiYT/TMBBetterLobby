@@ -114,5 +114,6 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FlameEvent(), this);
         getServer().getPluginManager().registerEvents(new SmokeEvent(), this);
         getServer().getPluginManager().registerEvents(new EasterEvent(), this);
+
     }
 }
