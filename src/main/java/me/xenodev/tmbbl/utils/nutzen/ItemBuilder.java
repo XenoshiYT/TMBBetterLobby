@@ -1,14 +1,19 @@
 package me.xenodev.tmbbl.utils.nutzen;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.libs.org.apache.commons.codec.binary.Base64;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class ItemBuilder {
 
@@ -59,6 +64,22 @@ public class ItemBuilder {
     public ItemBuilder setOwner(String name){
         SkullMeta smeta = (SkullMeta)meta;
         smeta.setOwner(name);
+        return this;
+    }
+
+    public ItemBuilder setOwnerURL(String url){
+        SkullMeta smeta = (SkullMeta) meta;
+        GameProfile profile = new GameProfile(UUID.randomUUID(), null);
+        byte[] encodedData = Base64.encodeBase64(String.format("{textures:{SKIN:{url:\"%s\"}}}", url).getBytes());
+        profile.getProperties().put("textures", new Property("textures", new String(encodedData)));
+        Field profileField = null;
+        try {
+            profileField = smeta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(smeta, profile);
+        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e1) {
+            e1.printStackTrace();
+        }
         return this;
     }
 

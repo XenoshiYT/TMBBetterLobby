@@ -2,10 +2,7 @@ package me.xenodev.tmbbl.events.profil.gadget.tmbdope;
 
 import me.xenodev.tmbbl.main.Main;
 import me.xenodev.tmbbl.utils.nutzen.ItemBuilder;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
@@ -26,6 +23,7 @@ public class TMBDopeEvent implements Listener {
         try {
             if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §9TMBDope §7«")) {
                 p.getInventory().setItem(6, new ItemBuilder(Material.FIREWORK_STAR).setName("§cBitte kurz warten").build());
+                p.playSound(p.getLocation(), Sound.ENTITY_PANDA_SNEEZE, 1f, 1f);
 
                 p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 20*30*2, 3));
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*30*2, 3));

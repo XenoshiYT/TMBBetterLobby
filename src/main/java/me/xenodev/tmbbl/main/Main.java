@@ -75,6 +75,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginCommand("build").setExecutor(new BuildCMD());
         getServer().getPluginCommand("spawn").setExecutor(new SpawnCMD());
         getServer().getPluginCommand("stats").setExecutor(new StatsCMD());
+        getServer().getPluginCommand("easter").setExecutor(new EasterCMD());
     }
 
     private void events(){

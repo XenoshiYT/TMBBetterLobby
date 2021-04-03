@@ -1,5 +1,6 @@
 package me.xenodev.tmbbl.events.profil.gadget.main;
 
+import me.xenodev.tmbbl.file.EasterFilebuilder;
 import me.xenodev.tmbbl.file.SettingsFilebuilder;
 import me.xenodev.tmbbl.main.Main;
 import me.xenodev.tmbbl.utils.nutzen.ItemBuilder;
@@ -36,6 +37,11 @@ public class GadgetEvent implements Listener {
                     inv.setItem(4, new ItemBuilder(Material.DIAMOND_SWORD).setName("§7» §6PvPSchwert §7«").build());
                     inv.setItem(5, new ItemBuilder(Material.BLAZE_ROD).setName("§7» §6Flugstab §7«").build());
                     inv.setItem(6, new ItemBuilder(Material.SUGAR).setName("§7» §6TMBDope §7«").build());
+                    if(EasterFilebuilder.getEggs(p) == EasterFilebuilder.getMaxEggs()){
+                        inv.setItem(7, new ItemBuilder(Material.PLAYER_HEAD).setOwnerURL("http://textures.minecraft.net/texture/3ed037452223bda1381a17c3daafa71baac6ed8aa3a71ae36163cfeb61227b47").setName("§7» §6Farbbombe §7«").build());
+                    }else{
+                        inv.setItem(7, new ItemBuilder(Material.PLAYER_HEAD).setOwnerURL("http://textures.minecraft.net/texture/badc048a7ce78f7dad72a07da27d85c0916881e5522eeed1e3daf217a38c1a").setName("§7» §9Was ist das wohl? §7«").build());
+                    }
 
                     inv.setItem(34, new ItemBuilder(Material.BARRIER).setName("§7» §cGadget löschen §7«").build());
                     inv.setItem(35, new ItemBuilder(Material.ARROW).setName("§7» §6Zurück §7«").build());
@@ -61,6 +67,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.sendMessage(Main.prefix + "§7Du hast dein ausgewähltes Gadget gelöscht");
                 p.getInventory().setItem(6, new ItemBuilder(Material.BARRIER).setName("§7» §cKein Gadget ausgewählt §7«").build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -90,6 +97,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.FISHING_ROD).setName("§7» §9Enterhaken §7«").setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Enderperle §7«")){
@@ -100,6 +108,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §9Enderperle §7«").build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Megasprung §7«")){
@@ -110,6 +119,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.FEATHER).setName("§7» §9Megasprung §7«").build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Feuerwerk §7«")){
@@ -120,6 +130,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.FIREWORK_ROCKET).setName("§7» §9Feuerwerk §7«").build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6PvPSchwert §7«")){
@@ -130,6 +141,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", true);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.DIAMOND_SWORD).setName("§7» §9PvPSchwert §7«").setLore("", "§7Benutze §eSneak + Rechtsklick§7 um den §3Kampfmodus §7zu §abetreten§7/§cverlassen").setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Flugstab §7«")){
@@ -140,6 +152,7 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.BLAZE_ROD).setName("§7» §9Flugstab §7«").setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6TMBDope §7«")){
@@ -150,7 +163,19 @@ public class GadgetEvent implements Listener {
                 SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
                 SettingsFilebuilder.setSetting(p, "Flugstab", false);
                 SettingsFilebuilder.setSetting(p, "TMBDope", true);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", false);
                 p.getInventory().setItem(6, new ItemBuilder(Material.SUGAR).setName("§7» §9TMBDope §7«").setUnbreakable().build());
+                p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
+            }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6TMBDope §7«")){
+                SettingsFilebuilder.setSetting(p, "Enterhaken", false);
+                SettingsFilebuilder.setSetting(p, "Enderperle", false);
+                SettingsFilebuilder.setSetting(p, "Megasprung", false);
+                SettingsFilebuilder.setSetting(p, "Feuerwerk", false);
+                SettingsFilebuilder.setSetting(p, "PvPSchwert", false);
+                SettingsFilebuilder.setSetting(p, "Flugstab", false);
+                SettingsFilebuilder.setSetting(p, "TMBDope", false);
+                SettingsFilebuilder.setSetting(p, "Farbbombe", true);
+                p.getInventory().setItem(6, new ItemBuilder(Material.EGG).setName("§7» §9Farbbombe §7«").setLore("EasterEgg-Gadget von Ostern 2021").build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }
         }

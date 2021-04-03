@@ -20,37 +20,39 @@ import java.util.List;
 public class DeathmatchEvent implements Listener {
 
     //if(PvPSchwertEvent.pvpschwert.contains(p)){
-      //  for(Player all : Bukkit.getOnlinePlayers()){
-        //    if(PvPSchwertEvent.pvpschwert.contains(all)){
-          //      e.setCancelled(false);
-            //}else{
-              //  e.setCancelled(true);
-           // }
-        //}
+    //  for(Player all : Bukkit.getOnlinePlayers()){
+    //    if(PvPSchwertEvent.pvpschwert.contains(all)){
+    //      e.setCancelled(false);
     //}else{
-      //  e.setCancelled(true);
+    //  e.setCancelled(true);
+    // }
+    //}
+    //}else{
+    //  e.setCancelled(true);
     //}
 
     @EventHandler
     public void onDamage(EntityDamageEvent e){
         if(e.getEntity() instanceof Player){
             Player p = (Player) e.getEntity();
-            if(p.getInventory().getItemInOffHand().getType().equals(Material.AIR)){
-                for(Player all : PvPSchwertEvent.pvpschwert){
-                    Player t = Bukkit.getPlayer(all.getName());
-                    if(PvPSchwertEvent.pvpschwert.contains(p) && PvPSchwertEvent.pvpschwert.contains(t)){
-                        e.setCancelled(false);
-                    }else{
+            if(PvPSchwertEvent.pvpschwert.contains(p)){
+              for(Player all : Bukkit.getOnlinePlayers()){
+                if(PvPSchwertEvent.pvpschwert.contains(all)){
+                    e.setCancelled(false);
+                }else{
+                    if(!PvPSchwertEvent.pvpschwert.contains(all)){
                         e.setCancelled(true);
+                    }else{
+                        e.setCancelled(false);
                     }
                 }
+              }
             }else{
-                e.setCancelled(true);
+              e.setCancelled(true);
             }
         }else{
             e.setCancelled(true);
         }
-        e.setCancelled(true);
     }
 
     @EventHandler

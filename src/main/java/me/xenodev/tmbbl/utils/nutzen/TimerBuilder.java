@@ -70,7 +70,7 @@ public class TimerBuilder {
             sched4 = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, (Runnable)new Runnable() {
                 @Override
                 public void run() {
-                    for(Entity entity : Bukkit.getWorld("gaming").getEntities()){
+                    for(Entity entity : Bukkit.getWorld("world").getEntities()){
                         if(entity instanceof Item){
                             entity.remove();
                         }

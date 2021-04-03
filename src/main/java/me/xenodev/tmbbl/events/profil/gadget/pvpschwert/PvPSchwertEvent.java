@@ -4,25 +4,16 @@ import me.xenodev.tmbbl.file.StatsFilebuilder;
 import me.xenodev.tmbbl.main.Main;
 import me.xenodev.tmbbl.utils.nutzen.ItemBuilder;
 import org.bukkit.*;
-import org.bukkit.block.BlockFace;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.Firework;
-import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class PvPSchwertEvent implements Listener {
 
