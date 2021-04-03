@@ -21,7 +21,7 @@ public class EasterFilebuilder {
     }
 
     public static void addEggs(Player p, Integer amount) {
-        setEggs(p, amount + 1);
+        setEggs(p, getEggs(p) + amount);
     }
 
     public static Integer getEggs(Player p) {

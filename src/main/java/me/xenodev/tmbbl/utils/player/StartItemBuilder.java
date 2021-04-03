@@ -54,7 +54,7 @@ public class StartItemBuilder {
                     p.getInventory().setItem(6, new ItemBuilder(Material.SUGAR).setName("§7» §9TMBDope §7«").setUnbreakable().build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                 }else if(SettingsFilebuilder.getSetting(p, "Farbbombe").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.EGG).setName("§7» §9Farbbombe §7«").setLore("EasterEgg-Gadget von Ostern 2021").build());
+                    p.getInventory().setItem(6, new ItemBuilder(Material.EGG).setName("§7» §9Farbbombe §7«").setLore("§5EasterEgg-Gadget von Ostern 2021").build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                 }else if(SettingsFilebuilder.getSetting(p, "Farbbombe").equals(false) && SettingsFilebuilder.getSetting(p, "TMBDope").equals(false) && SettingsFilebuilder.getSetting(p, "Flugstab").equals(false) && SettingsFilebuilder.getSetting(p, "PvPSchwert").equals(false) && SettingsFilebuilder.getSetting(p, "Enterhaken").equals(false) && SettingsFilebuilder.getSetting(p, "Enderperle").equals(false) && SettingsFilebuilder.getSetting(p, "Megasprung").equals(false) && SettingsFilebuilder.getSetting(p, "Feuerwerk").equals(false)){
                     p.getInventory().setItem(6, new ItemBuilder(Material.BARRIER).setName("§7» §cKein Gadget ausgewählt §7«").build());
