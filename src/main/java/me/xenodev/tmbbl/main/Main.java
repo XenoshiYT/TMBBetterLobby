@@ -17,6 +17,7 @@ import me.xenodev.tmbbl.events.profil.gadget.flugstab.FlugstabEvent;
 import me.xenodev.tmbbl.events.profil.gadget.main.GadgetEvent;
 import me.xenodev.tmbbl.events.profil.gadget.megasprung.MegasprungEvent;
 import me.xenodev.tmbbl.events.profil.gadget.pvpschwert.PvPSchwertEvent;
+import me.xenodev.tmbbl.events.profil.gadget.specialevents.easter.EasterEvent;
 import me.xenodev.tmbbl.events.profil.gadget.tmbdope.TMBDopeEvent;
 import me.xenodev.tmbbl.events.profil.head.HeadEvent;
 import me.xenodev.tmbbl.events.profil.main.ProfilEvent;
@@ -63,12 +64,12 @@ public class Main extends JavaPlugin {
         mysql.close();
     }
 
-    private void ConnectMySQL(){
+    private void ConnectMySQL() {
         mysql = new MySQL("localhost", "tmbmysql", "tmbmysql", "[BM7A6s5AeZmo6*]");
         mysql.update("CREATE TABLE IF NOT EXISTS Time(UUID VARCHAR(100),HOURS BIGINT,MINUTES INT,SECONDS INT)");
     }
 
-    private void commands(){
+    private void commands() {
         getServer().getPluginCommand("oz").setExecutor(new OnlinezeitCMD());
         getServer().getPluginCommand("ot").setExecutor(new OnlinezeitCMD());
         getServer().getPluginCommand("onlinezeit").setExecutor(new OnlinezeitCMD());
@@ -79,7 +80,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginCommand("easter").setExecutor(new EasterCMD());
     }
 
-    private void events(){
+    private void events() {
         getServer().getPluginManager().registerEvents(new BuildEvent(), this);
         getServer().getPluginManager().registerEvents(new DeathmatchEvent(), this);
         getServer().getPluginManager().registerEvents(new FoodEvent(), this);
@@ -97,6 +98,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FeuerwerkEvent(), this);
         getServer().getPluginManager().registerEvents(new GadgetEvent(), this);
         getServer().getPluginManager().registerEvents(new MegasprungEvent(), this);
+        getServer().getPluginManager().registerEvents(new EasterEvent(), this);
         getServer().getPluginManager().registerEvents(new PvPSchwertEvent(), this);
         getServer().getPluginManager().registerEvents(new HeadEvent(), this);
         getServer().getPluginManager().registerEvents(new HiderEvent(), this);
@@ -111,5 +113,6 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PotionEvent(), this);
         getServer().getPluginManager().registerEvents(new FlameEvent(), this);
         getServer().getPluginManager().registerEvents(new SmokeEvent(), this);
+        getServer().getPluginManager().registerEvents(new EasterEvent(), this);
     }
 }
