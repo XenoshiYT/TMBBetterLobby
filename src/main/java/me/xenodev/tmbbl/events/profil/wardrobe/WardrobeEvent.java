@@ -231,7 +231,7 @@ public class WardrobeEvent implements Listener {
                     inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                 }
 
-                inv.setItem(12, new ItemBuilder(Material.REDSTONE).setName("§7» §6/ §7«").build());
+                inv.setItem(12, new ItemBuilder(Material.MUSIC_DISC_PIGSTEP).setName("§7» §6Musik §7«").build());
                 inv.setItem(14, new ItemBuilder(Material.GOLDEN_BOOTS).setName("§7» §6Spuren §7«").build());
                 inv.setItem(19, new ItemBuilder(Material.PLAYER_HEAD).setName("§7» §6Köpfe §7«").build());
                 inv.setItem(25, new ItemBuilder(Material.PLAYER_HEAD).setOwner(p.getName()).setName("§7» §6Freunde §7«").build());

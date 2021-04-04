@@ -32,10 +32,10 @@ public class TrailEvent implements Listener {
 
                     inv.setItem(0, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.RED).setName("§7» §6Love §7«").build());
                     inv.setItem(1, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.LIME).setName("§7» §6Note §7«").build());
-                    inv.setItem(2, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.PURPLE).setName("§7» §6Ender §7«").build());
+                    inv.setItem(2, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.WHITE).setName("§7» §6Cloud §7«").build());
                     inv.setItem(3, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.ORANGE).setName("§7» §6Flame §7«").build());
-                    inv.setItem(4, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.GRAY).setName("§7» §6Smoke §7«").build());
-                    inv.setItem(5, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.BLUE).setName("§7» §6Potion §7«").build());
+                    inv.setItem(4, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.AQUA).setName("§7» §6Soulflame §7«").build());
+                    inv.setItem(5, new ItemBuilder(Material.LEATHER_BOOTS).setColor(Color.GRAY).setName("§7» §6Smoke §7«").build());
 
                     inv.setItem(43, new ItemBuilder(Material.BARRIER).setName("§7» §cSpur löschen §7«").build());
                     inv.setItem(44, new ItemBuilder(Material.ARROW).setName("§7» §6Zurück §7«").build());
@@ -57,10 +57,10 @@ public class TrailEvent implements Listener {
                 p.getInventory().setHelmet(null);
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", false);
                 p.sendMessage(Main.prefix + "§7Du hast deine ausgewählte Spur gelöscht");
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Zurück §7«")) {
@@ -71,7 +71,7 @@ public class TrailEvent implements Listener {
                     inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                 }
 
-                inv.setItem(12, new ItemBuilder(Material.REDSTONE).setName("§7» §6/ §7«").build());
+                inv.setItem(12, new ItemBuilder(Material.REDSTONE).setName("§7» §6Musik §7«").build());
                 inv.setItem(14, new ItemBuilder(Material.GOLDEN_BOOTS).setName("§7» §6Spuren §7«").build());
                 inv.setItem(19, new ItemBuilder(Material.PLAYER_HEAD).setName("§7» §6Köpfe §7«").build());
                 inv.setItem(25, new ItemBuilder(Material.PLAYER_HEAD).setOwner(p.getName()).setName("§7» §6Freunde §7«").build());
@@ -84,57 +84,57 @@ public class TrailEvent implements Listener {
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Love §7«")){
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", true);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", false);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
                 p.sendMessage(Main.prefix + "§7Du hast die §6Love-Spur §7ausgewählt");
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Note §7«")){
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", true);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", false);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
                 p.sendMessage(Main.prefix + "§7Du hast die §6Note-Spur §7ausgewählt");
-            }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Ender §7«")){
+            }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Cloud §7«")){
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", true);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", true);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", false);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
-                p.sendMessage(Main.prefix + "§7Du hast die §6Ender-Spur §7ausgewählt");
+                p.sendMessage(Main.prefix + "§7Du hast die §6Cloud-Spur §7ausgewählt");
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Flame §7«")){
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", true);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", false);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
                 p.sendMessage(Main.prefix + "§7Du hast die §6Flame-Spur §7ausgewählt");
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Smoke §7«")){
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", true);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", false);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
                 p.sendMessage(Main.prefix + "§7Du hast die §6Smoke-Spur §7ausgewählt");
-            }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Potion §7«")){
+            }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Soulflame §7«")){
                 SettingsFilebuilder.setArmor(p, "Spur", "Love", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Note", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Ender", false);
+                SettingsFilebuilder.setArmor(p, "Spur", "Cloud", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Flame", false);
                 SettingsFilebuilder.setArmor(p, "Spur", "Smoke", false);
-                SettingsFilebuilder.setArmor(p, "Spur", "Potion", true);
+                SettingsFilebuilder.setArmor(p, "Spur", "Soulflame", true);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
-                p.sendMessage(Main.prefix + "§7Du hast die §6Potion-Spur §7ausgewählt");
+                p.sendMessage(Main.prefix + "§7Du hast die §6Soulflame-Spur §7ausgewählt");
             }
         }
     }

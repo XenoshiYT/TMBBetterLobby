@@ -64,7 +64,6 @@ public class DeathmatchEvent implements Listener {
             public void run() {
                 if(p.isDead()){
                     PvPSchwertEvent.pvpschwert.remove(p);
-                    p.spigot().respawn();
                     StartItemBuilder.setItem(p);
                     Location loc = LocationFilebuilder.getLocation("Spawn");
                     p.teleport(loc);

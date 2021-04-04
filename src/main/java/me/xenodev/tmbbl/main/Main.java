@@ -1,9 +1,13 @@
 package me.xenodev.tmbbl.main;
 
+import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
+import com.github.fierioziy.particlenativeapi.api.Particles_1_13;
+import com.github.fierioziy.particlenativeapi.plugin.ParticleNativePlugin;
 import me.xenodev.tmbbl.commands.lobby.BuildCMD;
 import me.xenodev.tmbbl.commands.lobby.SpawnCMD;
 import me.xenodev.tmbbl.commands.player.OnlinezeitCMD;
 import me.xenodev.tmbbl.commands.player.StatsCMD;
+import me.xenodev.tmbbl.commands.specialevents.main.EventCMD;
 import me.xenodev.tmbbl.commands.specialevents.winter.EasterCMD;
 import me.xenodev.tmbbl.events.lobby.*;
 import me.xenodev.tmbbl.events.navigator.NavigatorEvent;
@@ -22,15 +26,17 @@ import me.xenodev.tmbbl.events.profil.gadget.tmbdope.TMBDopeEvent;
 import me.xenodev.tmbbl.events.profil.head.HeadEvent;
 import me.xenodev.tmbbl.events.profil.main.ProfilEvent;
 import me.xenodev.tmbbl.events.profil.hide.HiderEvent;
-import me.xenodev.tmbbl.events.profil.trail.ender.EnderEvent;
+import me.xenodev.tmbbl.events.profil.music.main.MusicEvent;
+import me.xenodev.tmbbl.events.profil.trail.cloud.CloudEvent;
 import me.xenodev.tmbbl.events.profil.trail.flame.FlameEvent;
 import me.xenodev.tmbbl.events.profil.trail.love.LoveEvent;
 import me.xenodev.tmbbl.events.profil.trail.main.TrailEvent;
 import me.xenodev.tmbbl.events.profil.trail.note.NoteEvent;
-import me.xenodev.tmbbl.events.profil.trail.potion.PotionEvent;
+import me.xenodev.tmbbl.events.profil.trail.soulflame.SoulflameEvent;
 import me.xenodev.tmbbl.events.profil.trail.smoke.SmokeEvent;
 import me.xenodev.tmbbl.events.profil.wardrobe.WardrobeEvent;
 import me.xenodev.tmbbl.mysql.MySQL;
+import me.xenodev.tmbbl.utils.nutzen.SnowBuilder;
 import me.xenodev.tmbbl.utils.nutzen.TimerBuilder;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -45,11 +51,19 @@ public class Main extends JavaPlugin {
     public static String error = "§8[§4ERROR§8] ";
 
     public static MySQL mysql;
+    public static Particles_1_13 particles;
 
     @Override
     public void onEnable() {
         instance = this;
         ConnectMySQL();
+
+        ParticleNativeAPI api = ParticleNativePlugin.getAPI();
+        particles = api.getParticles_1_13();
+
+        if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("christmas")){
+            new SnowBuilder();
+        }
 
         commands();
         events();
@@ -78,6 +92,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginCommand("spawn").setExecutor(new SpawnCMD());
         getServer().getPluginCommand("stats").setExecutor(new StatsCMD());
         getServer().getPluginCommand("easter").setExecutor(new EasterCMD());
+        getServer().getPluginCommand("event").setExecutor(new EventCMD());
     }
 
     private void events() {
@@ -86,6 +101,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FoodEvent(), this);
         getServer().getPluginManager().registerEvents(new ItemEvent(), this);
         getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
+        getServer().getPluginManager().registerEvents(new SwitchhandEvent(), this);
 
         getServer().getPluginManager().registerEvents(new NavigatorEvent(), this);
 
@@ -107,13 +123,14 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FlugstabEvent(), this);
         getServer().getPluginManager().registerEvents(new TMBDopeEvent(), this);
         getServer().getPluginManager().registerEvents(new TrailEvent(), this);
-        getServer().getPluginManager().registerEvents(new EnderEvent(), this);
+        getServer().getPluginManager().registerEvents(new CloudEvent(), this);
         getServer().getPluginManager().registerEvents(new LoveEvent(), this);
         getServer().getPluginManager().registerEvents(new NoteEvent(), this);
-        getServer().getPluginManager().registerEvents(new PotionEvent(), this);
+        getServer().getPluginManager().registerEvents(new SoulflameEvent(), this);
         getServer().getPluginManager().registerEvents(new FlameEvent(), this);
         getServer().getPluginManager().registerEvents(new SmokeEvent(), this);
         getServer().getPluginManager().registerEvents(new EasterEvent(), this);
+        getServer().getPluginManager().registerEvents(new MusicEvent(), this);
 
     }
 }
