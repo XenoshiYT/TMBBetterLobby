@@ -18,39 +18,18 @@ public class TimerBuilder {
     private static int sched5;
 
     public static void startScoreboard() {
-    if (!Bukkit.getScheduler().isCurrentlyRunning(sched1)) {
-        sched1 = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, (Runnable)new Runnable() {
-            @Override
-            public void run() {
-                for (final Player all : Bukkit.getOnlinePlayers()) {
-                    ScoreBoardBuilder.updateScoreboard(all);
-                }
-            }
-        }, 0L, 20L);
-    }
-}
-
-    public static void startOnlinetime() {
-        if (!Bukkit.getScheduler().isCurrentlyRunning(sched2)) {
-            sched2 = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, (Runnable)new Runnable() {
+        if (!Bukkit.getScheduler().isCurrentlyRunning(sched1)) {
+            sched1 = Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.instance, (Runnable)new Runnable() {
                 @Override
                 public void run() {
                     for (final Player all : Bukkit.getOnlinePlayers()) {
-                        TimeSQL.addSeconds(all.getUniqueId(), 1);
-                        if(TimeSQL.getSeconds(all.getUniqueId()) == 60){
-                            TimeSQL.addMinutes(all.getUniqueId(), 1);
-                            TimeSQL.setSeconds(all.getUniqueId(), 0);
-                        }
-
-                        if(TimeSQL.getMinutes(all.getUniqueId()) == 60){
-                            TimeSQL.addHours(all.getUniqueId(), 1);
-                            TimeSQL.setMinutes(all.getUniqueId(), 0);
-                        }
+                        ScoreBoardBuilder.updateScoreboard(all);
                     }
                 }
-            }, 0L, 20L);
+            }, 0L, 20*60);
         }
     }
+
 
     public static void startDisplay() {
         if (!Bukkit.getScheduler().isCurrentlyRunning(sched3)) {

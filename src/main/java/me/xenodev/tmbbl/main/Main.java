@@ -2,32 +2,33 @@ package me.xenodev.tmbbl.main;
 
 import com.github.fierioziy.particlenativeapi.api.ParticleNativeAPI;
 import com.github.fierioziy.particlenativeapi.api.Particles_1_13;
+import com.github.fierioziy.particlenativeapi.api.Particles_1_8;
 import com.github.fierioziy.particlenativeapi.plugin.ParticleNativePlugin;
 import me.xenodev.tmbbl.commands.lobby.BuildCMD;
 import me.xenodev.tmbbl.commands.lobby.SpawnCMD;
 import me.xenodev.tmbbl.commands.player.OnlinezeitCMD;
 import me.xenodev.tmbbl.commands.player.StatsCMD;
 import me.xenodev.tmbbl.commands.specialevents.main.EventCMD;
-import me.xenodev.tmbbl.commands.specialevents.winter.EasterCMD;
 import me.xenodev.tmbbl.events.lobby.*;
 import me.xenodev.tmbbl.events.navigator.NavigatorEvent;
+import me.xenodev.tmbbl.events.player.DoppleJumpEvent;
 import me.xenodev.tmbbl.events.player.JoinEvent;
 import me.xenodev.tmbbl.events.player.LeaveEvent;
+import me.xenodev.tmbbl.events.player.MusicMoveEvent;
 import me.xenodev.tmbbl.events.profil.friend.FriendEvent;
-import me.xenodev.tmbbl.events.profil.gadget.enderperle.EnderPerleEvent;
+import me.xenodev.tmbbl.events.profil.gadget.enderperle.EnderperleEvent;
 import me.xenodev.tmbbl.events.profil.gadget.enterhaken.EnterhakenEvent;
-import me.xenodev.tmbbl.events.profil.gadget.feuerwerk.FeuerwerkEvent;
 import me.xenodev.tmbbl.events.profil.gadget.flugstab.FlugstabEvent;
 import me.xenodev.tmbbl.events.profil.gadget.main.GadgetEvent;
-import me.xenodev.tmbbl.events.profil.gadget.megasprung.MegasprungEvent;
-import me.xenodev.tmbbl.events.profil.gadget.pvpschwert.PvPSchwertEvent;
-import me.xenodev.tmbbl.events.profil.gadget.specialevents.easter.EasterEvent;
-import me.xenodev.tmbbl.events.profil.gadget.tmbdope.TMBDopeEvent;
+import me.xenodev.tmbbl.events.profil.gadget.specialevents.easter.EggBombEvent;
 import me.xenodev.tmbbl.events.profil.head.HeadEvent;
 import me.xenodev.tmbbl.events.profil.main.ProfilEvent;
-import me.xenodev.tmbbl.events.profil.hide.HiderEvent;
 import me.xenodev.tmbbl.events.profil.music.main.MusicEvent;
+import me.xenodev.tmbbl.events.profil.settings.main.SettingsEvent;
 import me.xenodev.tmbbl.events.profil.trail.cloud.CloudEvent;
+import me.xenodev.tmbbl.events.profil.trail.event.christmas.SnowEvent;
+import me.xenodev.tmbbl.events.profil.trail.event.easter.ColorEvent;
+import me.xenodev.tmbbl.events.profil.trail.event.halloween.BarrierEvent;
 import me.xenodev.tmbbl.events.profil.trail.flame.FlameEvent;
 import me.xenodev.tmbbl.events.profil.trail.love.LoveEvent;
 import me.xenodev.tmbbl.events.profil.trail.main.TrailEvent;
@@ -43,15 +44,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin {
 
     public static Main instance;
-    public int sched;
-    public int sched1;
-    public int sched2;
-    public int sched3;
     public static String prefix = "§8[§5§lTMB§8] ";
     public static String error = "§8[§4ERROR§8] ";
 
     public static MySQL mysql;
-    public static Particles_1_13 particles;
+    public static Particles_1_13 particles_1_13;
+    public static Particles_1_8 particles_1_8;
 
     @Override
     public void onEnable() {
@@ -59,7 +57,8 @@ public class Main extends JavaPlugin {
         ConnectMySQL();
 
         ParticleNativeAPI api = ParticleNativePlugin.getAPI();
-        particles = api.getParticles_1_13();
+        particles_1_13 = api.getParticles_1_13();
+        particles_1_8 = api.getParticles_1_8();
 
         if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("christmas")){
             new SnowBuilder();
@@ -68,7 +67,6 @@ public class Main extends JavaPlugin {
         commands();
         events();
         TimerBuilder.startScoreboard();
-        TimerBuilder.startOnlinetime();
         TimerBuilder.startDisplay();
         TimerBuilder.startClearLag();
     }
@@ -81,6 +79,8 @@ public class Main extends JavaPlugin {
     private void ConnectMySQL() {
         mysql = new MySQL("localhost", "tmbmysql", "tmbmysql", "[BM7A6s5AeZmo6*]");
         mysql.update("CREATE TABLE IF NOT EXISTS Time(UUID VARCHAR(100),HOURS BIGINT,MINUTES INT,SECONDS INT)");
+        mysql.update("CREATE TABLE IF NOT EXISTS Coins(UUID VARCHAR(100),COINS BIGINT)");
+        mysql.update("CREATE TABLE IF NOT EXISTS Bytes(UUID VARCHAR(100),BYTES BIGINT)");
     }
 
     private void commands() {
@@ -90,14 +90,12 @@ public class Main extends JavaPlugin {
         getServer().getPluginCommand("onlinetime").setExecutor(new OnlinezeitCMD());
         getServer().getPluginCommand("build").setExecutor(new BuildCMD());
         getServer().getPluginCommand("spawn").setExecutor(new SpawnCMD());
-        getServer().getPluginCommand("stats").setExecutor(new StatsCMD());
-        getServer().getPluginCommand("easter").setExecutor(new EasterCMD());
         getServer().getPluginCommand("event").setExecutor(new EventCMD());
+        getServer().getPluginCommand("stats").setExecutor(new StatsCMD());
     }
 
     private void events() {
         getServer().getPluginManager().registerEvents(new BuildEvent(), this);
-        getServer().getPluginManager().registerEvents(new DeathmatchEvent(), this);
         getServer().getPluginManager().registerEvents(new FoodEvent(), this);
         getServer().getPluginManager().registerEvents(new ItemEvent(), this);
         getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
@@ -107,21 +105,18 @@ public class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
         getServer().getPluginManager().registerEvents(new LeaveEvent(), this);
+        getServer().getPluginManager().registerEvents(new DoppleJumpEvent(), this);
 
         getServer().getPluginManager().registerEvents(new FriendEvent(), this);
-        getServer().getPluginManager().registerEvents(new EnderPerleEvent(), this);
-        getServer().getPluginManager().registerEvents(new EnterhakenEvent(), this);
-        getServer().getPluginManager().registerEvents(new FeuerwerkEvent(), this);
         getServer().getPluginManager().registerEvents(new GadgetEvent(), this);
-        getServer().getPluginManager().registerEvents(new MegasprungEvent(), this);
-        getServer().getPluginManager().registerEvents(new EasterEvent(), this);
-        getServer().getPluginManager().registerEvents(new PvPSchwertEvent(), this);
+        getServer().getPluginManager().registerEvents(new EggBombEvent(), this);
+        getServer().getPluginManager().registerEvents(new EnterhakenEvent(), this);
+        getServer().getPluginManager().registerEvents(new EnderperleEvent(), this);
         getServer().getPluginManager().registerEvents(new HeadEvent(), this);
-        getServer().getPluginManager().registerEvents(new HiderEvent(), this);
+        getServer().getPluginManager().registerEvents(new SettingsEvent(), this);
         getServer().getPluginManager().registerEvents(new ProfilEvent(), this);
         getServer().getPluginManager().registerEvents(new WardrobeEvent(), this);
         getServer().getPluginManager().registerEvents(new FlugstabEvent(), this);
-        getServer().getPluginManager().registerEvents(new TMBDopeEvent(), this);
         getServer().getPluginManager().registerEvents(new TrailEvent(), this);
         getServer().getPluginManager().registerEvents(new CloudEvent(), this);
         getServer().getPluginManager().registerEvents(new LoveEvent(), this);
@@ -129,8 +124,12 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SoulflameEvent(), this);
         getServer().getPluginManager().registerEvents(new FlameEvent(), this);
         getServer().getPluginManager().registerEvents(new SmokeEvent(), this);
-        getServer().getPluginManager().registerEvents(new EasterEvent(), this);
+        getServer().getPluginManager().registerEvents(new EggBombEvent(), this);
         getServer().getPluginManager().registerEvents(new MusicEvent(), this);
+        getServer().getPluginManager().registerEvents(new BarrierEvent(), this);
+        getServer().getPluginManager().registerEvents(new ColorEvent(), this);
+        getServer().getPluginManager().registerEvents(new SnowEvent(), this);
+        getServer().getPluginManager().registerEvents(new MusicMoveEvent(), this);
 
     }
 }

@@ -17,7 +17,7 @@ public class SpawnCMD implements CommandExecutor {
         if(cmd.getName().equalsIgnoreCase("spawn")){
             if(args.length == 1){
                 if(args[0].equalsIgnoreCase("set")){
-                    if(p.hasPermission("tmb.build")){
+                    if(p.hasPermission("tmb.setspawn")){
                         LocationFilebuilder.setLocation("Spawn", p.getLocation());
                         p.sendMessage(Main.prefix + "§7Du hast den §6Spawn §7gesetzt");
                     }else{

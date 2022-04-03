@@ -1,6 +1,5 @@
 package me.xenodev.tmbbl.events.player;
 
-import me.xenodev.tmbbl.events.profil.gadget.pvpschwert.PvPSchwertEvent;
 import me.xenodev.tmbbl.utils.player.ScoreBoardDisplayBuilder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +15,6 @@ public class LeaveEvent implements Listener {
 
         e.setQuitMessage("");
         ScoreBoardDisplayBuilder.timerdisplay.remove(p);
-        PvPSchwertEvent.pvpschwert.remove(p);
         for(PotionEffect effect : p.getActivePotionEffects()){
             p.removePotionEffect(effect.getType());
         }

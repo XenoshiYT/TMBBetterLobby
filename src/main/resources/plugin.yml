@@ -1,5 +1,5 @@
 name: TMBBetterLobby
-version: 6.0
+version: 6.5
 author: XenoDEV
 api-version: 1.16
 
@@ -20,7 +20,5 @@ commands:
     description: Teleportiere dich zum Spawn
   stats:
     description: Schaue die Stats eines Spielers an
-  easter:
-    description: Controlliere die Eggs easy
   event:
     description: Setze das Lobbyevent um

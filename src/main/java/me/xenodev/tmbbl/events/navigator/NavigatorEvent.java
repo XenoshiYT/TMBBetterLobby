@@ -77,13 +77,13 @@ public class NavigatorEvent implements Listener {
                             for (int i = 27; i < 36; i++) {
                                 inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                             }
-                            ServiceInfoSnapshot tutorial = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("devserver-1");
+                            ServiceInfoSnapshot tutorial = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("tbuilderserver-1");
                             Integer ti = ServiceInfoSnapshotUtil.getPlayers(tutorial).size();
                             Integer tm = ServiceInfoSnapshotUtil.getMaxPlayers(tutorial);
                             ServiceInfoSnapshot bauserver = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("bauserver-1");
                             Integer bi = ServiceInfoSnapshotUtil.getPlayers(bauserver).size();
                             Integer bm = ServiceInfoSnapshotUtil.getMaxPlayers(bauserver);
-                            inv.setItem(29, new ItemBuilder(Material.REDSTONE).setName("§7» §aDevserver §7«").setLore("", "§7- §c§o" + ti + " §7/ §c§o" + tm + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
+                            inv.setItem(29, new ItemBuilder(Material.STONE_BRICK_SLAB).setName("§7» §aTBuilderserver §7«").setLore("", "§7- §c§o" + ti + " §7/ §c§o" + tm + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
                             inv.setItem(33, new ItemBuilder(Material.BRICK_STAIRS).setName("§7» §2Bauserver §7«").setLore("", "§7- §c§o" + bi + " §7/ §c§o" + bm + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
                             p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                         }
@@ -135,12 +135,12 @@ public class NavigatorEvent implements Listener {
                 }else{
                     p.sendMessage(Main.error + "§cDer Azubiserver ist für Azubis vorgesehen");
                 }
-            } else if(e.getCurrentItem().getType().equals(Material.REDSTONE)){
-                if(p.hasPermission("tmb.devserver")){
+            } else if(e.getCurrentItem().getType().equals(Material.STONE_BRICK_SLAB)){
+                if(p.hasPermission("tmb.tbuilderserver")){
                     IPlayerManager player = CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class);
-                    player.getPlayerExecutor(p.getUniqueId()).connect("devserver-1");
+                    player.getPlayerExecutor(p.getUniqueId()).connect("tbuilderserver-1");
                 }else{
-                    p.sendMessage(Main.error + "§cDer Tutorialserver ist noch nicht betretbar");
+                    p.sendMessage(Main.error + "§cDer TBuilderserver ist für unsere Test_Builder");
                 }
             } else if(e.getCurrentItem().getType().equals(Material.BRICK_STAIRS)){
                 if(p.hasPermission("tmb.bauserver")){

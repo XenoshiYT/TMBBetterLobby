@@ -33,8 +33,7 @@ public class HeadEvent implements Listener {
                     inv.setItem(1, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Gondii").setName("§7» §6Kopf von Gondii §7«").build());
                     inv.setItem(2, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Malette").setName("§7» §6Kopf von Malette §7«").build());
                     inv.setItem(3, new ItemBuilder(Material.PLAYER_HEAD).setOwner("XenoshiYT").setName("§7» §6Kopf von Xenoshi §7«").build());
-                    inv.setItem(4, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TheLucas777").setName("§7» §6Kopf von Lucas §7«").build());
-                    inv.setItem(5, new ItemBuilder(Material.PLAYER_HEAD).setOwner("The_Reaper").setName("§7» §6Kopf von Reaper §7«").build());
+                    inv.setItem(4, new ItemBuilder(Material.PLAYER_HEAD).setOwner("The_Reaper").setName("§7» §6Kopf von Reaper §7«").build());
 
                     inv.setItem(43, new ItemBuilder(Material.BARRIER).setName("§7» §cKopf löschen §7«").build());
                     inv.setItem(44, new ItemBuilder(Material.ARROW).setName("§7» §6Zurück §7«").build());
@@ -58,7 +57,6 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.sendMessage(Main.prefix + "§7Du hast deinen ausgewählten Kopf gelöscht");
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -76,7 +74,7 @@ public class HeadEvent implements Listener {
                 inv.setItem(25, new ItemBuilder(Material.PLAYER_HEAD).setOwner(p.getName()).setName("§7» §6Freunde §7«").build());
                 inv.setItem(31, new ItemBuilder(Material.NETHERITE_CHESTPLATE).setName("§7» §6Kleiderschrank §7«").build());
                 inv.setItem(38, new ItemBuilder(Material.CHEST).setName("§7» §6Gadgets §7«").build());
-                inv.setItem(42, new ItemBuilder(Material.TOTEM_OF_UNDYING).setName("§7» §6Verstecker §7«").build());
+                inv.setItem(42, new ItemBuilder(Material.REDSTONE).setName("§7» §6Settings §7«").build());
 
                 p.openInventory(inv);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -85,7 +83,6 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Schildkrötenhelm", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Kettenhelm", false);
@@ -100,7 +97,6 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", true);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Schildkrötenhelm", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Kettenhelm", false);
@@ -115,7 +111,6 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", true);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Schildkrötenhelm", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Kettenhelm", false);
@@ -130,7 +125,6 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", true);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Schildkrötenhelm", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Kettenhelm", false);
@@ -140,27 +134,11 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Helm", "Netherithelm", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setOwner("XenoshiYT").build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
-            }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Kopf von Lucas §7«")){
-                SettingsFilebuilder.setArmor(p, "Kopf", "Clashi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", true);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
-                SettingsFilebuilder.setArmor(p, "Helm", "Schildkrötenhelm", false);
-                SettingsFilebuilder.setArmor(p, "Helm", "Kettenhelm", false);
-                SettingsFilebuilder.setArmor(p, "Helm", "Eisenhelm", false);
-                SettingsFilebuilder.setArmor(p, "Helm", "Diamanthelm", false);
-                SettingsFilebuilder.setArmor(p, "Helm", "Goldhelm", false);
-                SettingsFilebuilder.setArmor(p, "Helm", "Netherithelm", false);
-                p.getInventory().setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setOwner("TheLucas777").build());
-                p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Kopf von Reaper §7«")) {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Clashi", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", true);
                 SettingsFilebuilder.setArmor(p, "Helm", "Schildkrötenhelm", false);
                 SettingsFilebuilder.setArmor(p, "Helm", "Kettenhelm", false);

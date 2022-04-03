@@ -20,9 +20,10 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
 
+        <!--  New Maven repository for snapshots -->
         <repository>
-            <id>releases</id>
-            <url>https://repo.cloudnetservice.eu/repository/releases/</url>
+            <id>snapshots</id>
+            <url>https://repo.cloudnetservice.eu/repository/snapshots/</url>
         </repository>
     </repositories>
 
@@ -37,7 +38,7 @@
         <!--This adds the Spigot API artifact to the build -->
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <artifactId>spigot</artifactId>
             <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -89,14 +90,5 @@
             <version>3.3.0-RELEASE</version>
             <scope>provided</scope>
         </dependency>
-
-        <!--  cloudnet npcs module for plugins and modules -->
-        <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
-            <artifactId>cloudnet-npcs</artifactId>
-            <version>3.3.0-RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
-
 </project>

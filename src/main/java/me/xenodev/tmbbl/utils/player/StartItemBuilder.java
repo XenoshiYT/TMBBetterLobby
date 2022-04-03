@@ -35,28 +35,16 @@ public class StartItemBuilder {
                 if(SettingsFilebuilder.getSetting(p, "Enterhaken").equals(true)){
                     p.getInventory().setItem(6, new ItemBuilder(Material.FISHING_ROD).setName("§7» §9Enterhaken §7«").setUnbreakable().build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "Enderperle").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §9Enderperle §7«").build());
-                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "Megasprung").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.FEATHER).setName("§7» §9Megasprung §7«").build());
-                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "Feuerwerk").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.FIREWORK_ROCKET).setName("§7» §9Feuerwerk §7«").build());
-                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "PvPSchwert").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.DIAMOND_SWORD).setName("§7» §9PvPSchwert §7«").setUnbreakable().setLore("", "§7Benutze §eSneak + Rechtsklick§7 um den §3Kampfmodus §7zu §abetreten§7/§cverlassen").build());
-                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                 }else if(SettingsFilebuilder.getSetting(p, "Flugstab").equals(true)){
                     p.getInventory().setItem(6, new ItemBuilder(Material.BLAZE_ROD).setName("§7» §9Flugstab §7«").build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "TMBDope").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.SUGAR).setName("§7» §9TMBDope §7«").build());
-                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                 }else if(SettingsFilebuilder.getSetting(p, "Eggbomb").equals(true)){
-                    p.getInventory().setItem(6, new ItemBuilder(Material.EGG).setName("§7» §9Eggbomb §7«").setLore("§5EasterEgg-Gadget von Ostern 2021").build());
+                    p.getInventory().setItem(6, new ItemBuilder(Material.EGG).setName("§7» §9Eggbomb §7«").build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "Eggbomb").equals(false) && SettingsFilebuilder.getSetting(p, "TMBDope").equals(false) && SettingsFilebuilder.getSetting(p, "Flugstab").equals(false) && SettingsFilebuilder.getSetting(p, "PvPSchwert").equals(false) && SettingsFilebuilder.getSetting(p, "Enterhaken").equals(false) && SettingsFilebuilder.getSetting(p, "Enderperle").equals(false) && SettingsFilebuilder.getSetting(p, "Megasprung").equals(false) && SettingsFilebuilder.getSetting(p, "Feuerwerk").equals(false)){
+                }else if(SettingsFilebuilder.getSetting(p, "Enderperle").equals(true)){
+                    p.getInventory().setItem(6, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §9Enderperle §7«").build());
+                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
+                }else if(SettingsFilebuilder.getSetting(p, "Enderperle").equals(false) && SettingsFilebuilder.getSetting(p, "Eggbomb").equals(false) && SettingsFilebuilder.getSetting(p, "Flugstab").equals(false) && SettingsFilebuilder.getSetting(p, "Enterhaken").equals(false)){
                     p.getInventory().setItem(6, new ItemBuilder(Material.BARRIER).setName("§7» §cKein Gadget ausgewählt §7«").build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                 }

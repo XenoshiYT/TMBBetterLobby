@@ -20,19 +20,25 @@ public class SmokeEvent implements Listener {
             if(SettingsFilebuilder.getSetting(p, "Hide").equals(false)) {
                 if (p.getGameMode().equals(GameMode.ADVENTURE) || p.getGameMode().equals(GameMode.SURVIVAL) || p.getGameMode().equals(GameMode.CREATIVE)) {
                     for (Player all : Bukkit.getOnlinePlayers()) {
-                        Location loc = p.getLocation().add(0, 0.5, 0);
-                        Object packet = Main.particles.SMOKE().packet(true, loc);
-                        Main.particles.sendPacket(all, packet);
+                        if (SettingsFilebuilder.getSetting(all, "Hide").equals(true)) {
+                            Location loc = p.getLocation().add(0, 0.5, 0);
+                            Object packet = Main.particles_1_13.SMOKE().packet(true, loc);
+                            Main.particles_1_13.sendPacket(p, packet);
+                        } else {
+                            Location loc = p.getLocation().add(0, 0.5, 0);
+                            Object packet = Main.particles_1_13.SMOKE().packet(true, loc);
+                            Main.particles_1_13.sendPacket(all, packet);
+                        }
                     }
                 } else {
                     Location loc = p.getLocation().add(0, 0.5, 0);
-                    Object packet = Main.particles.SMOKE().packet(true, loc);
-                    Main.particles.sendPacket(p, packet);
+                    Object packet = Main.particles_1_13.SMOKE().packet(true, loc);
+                    Main.particles_1_13.sendPacket(p, packet);
                 }
             }else{
                 Location loc = p.getLocation().add(0, 0.5, 0);
-                Object packet = Main.particles.SMOKE().packet(true, loc);
-                Main.particles.sendPacket(p, packet);
+                Object packet = Main.particles_1_13.SMOKE().packet(true, loc);
+                Main.particles_1_13.sendPacket(p, packet);
             }
         }
     }

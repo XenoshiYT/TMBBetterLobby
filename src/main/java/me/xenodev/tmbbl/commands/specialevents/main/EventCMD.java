@@ -1,5 +1,6 @@
 package me.xenodev.tmbbl.commands.specialevents.main;
 
+import me.xenodev.tmbbl.file.EventFilebuilder;
 import me.xenodev.tmbbl.main.Main;
 import me.xenodev.tmbbl.utils.player.StartItemBuilder;
 import org.bukkit.Bukkit;
@@ -27,56 +28,31 @@ public class EventCMD implements CommandExecutor {
             if(p.hasPermission("tmb.event.admin")) {
                 if (args.length == 1) {
                     if (args[0].equalsIgnoreCase("easter")) {
-                        cfg.set("Activ.Event", "easter");
-                        try {
-                            cfg.save(file);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        EventFilebuilder.setEvent("easter");
                         for (Player all : Bukkit.getOnlinePlayers()) {
                             all.kickPlayer("§7Die Lobby hat nun das Event §aEaster §7gesetzt");
                         }
                         Main.instance.getServer().shutdown();
                     } else if (args[0].equalsIgnoreCase("halloween")) {
-                        cfg.set("Activ.Event", "halloween");
-                        try {
-                            cfg.save(file);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        EventFilebuilder.setEvent("halloween");
                         for (Player all : Bukkit.getOnlinePlayers()) {
                             all.kickPlayer("§7Die Lobby hat nun das Event §6Halloween §7gesetzt");
                         }
                         Main.instance.getServer().shutdown();
                     } else if (args[0].equalsIgnoreCase("christmas")) {
-                        cfg.set("Activ.Event", "christmas");
-                        try {
-                            cfg.save(file);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        EventFilebuilder.setEvent("christmas");
                         for (Player all : Bukkit.getOnlinePlayers()) {
                             all.kickPlayer("§7Die Lobby hat nun das Event §bChristmas §7gesetzt");
                         }
                         Main.instance.getServer().shutdown();
                     } else if (args[0].equalsIgnoreCase("newyear")) {
-                        cfg.set("Activ.Event", "newyear");
-                        try {
-                            cfg.save(file);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        EventFilebuilder.setEvent("newyear");
                         for (Player all : Bukkit.getOnlinePlayers()) {
                             all.kickPlayer("§7Die Lobby hat nun das Event §cNew Year §7gesetzt");
                         }
                         Main.instance.getServer().shutdown();
                     } else if (args[0].equalsIgnoreCase("none")) {
-                        cfg.set("Activ.Event", "none");
-                        try {
-                            cfg.save(file);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        EventFilebuilder.setEvent("none");
                         for (Player all : Bukkit.getOnlinePlayers()) {
                             all.kickPlayer("§7Die Lobby hat nun kein Event mehr gesetzt");
                         }

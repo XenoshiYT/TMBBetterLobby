@@ -237,7 +237,7 @@ public class WardrobeEvent implements Listener {
                 inv.setItem(25, new ItemBuilder(Material.PLAYER_HEAD).setOwner(p.getName()).setName("§7» §6Freunde §7«").build());
                 inv.setItem(31, new ItemBuilder(Material.NETHERITE_CHESTPLATE).setName("§7» §6Kleiderschrank §7«").build());
                 inv.setItem(38, new ItemBuilder(Material.CHEST).setName("§7» §6Gadgets §7«").build());
-                inv.setItem(42, new ItemBuilder(Material.TOTEM_OF_UNDYING).setName("§7» §6Verstecker §7«").build());
+                inv.setItem(42, new ItemBuilder(Material.REDSTONE).setName("§7» §6Settings §7«").build());
 
                 p.openInventory(inv);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -252,7 +252,6 @@ public class WardrobeEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.TURTLE_HELMET).setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -267,7 +266,6 @@ public class WardrobeEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.CHAINMAIL_HELMET).setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -282,7 +280,6 @@ public class WardrobeEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.IRON_HELMET).setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -297,7 +294,6 @@ public class WardrobeEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.DIAMOND_HELMET).setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -312,7 +308,6 @@ public class WardrobeEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.GOLDEN_HELMET).setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
@@ -327,7 +322,6 @@ public class WardrobeEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Gondii", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
-                SettingsFilebuilder.setArmor(p, "Kopf", "Lucas", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
                 p.getInventory().setHelmet(new ItemBuilder(Material.NETHERITE_HELMET).setUnbreakable().build());
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
