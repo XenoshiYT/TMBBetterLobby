@@ -67,12 +67,12 @@ public class ByteSQL {
         }
     }
 
-    public static void removeCoins(UUID uuid, Integer bytes){
+    public static void removeBytes(UUID uuid, Integer bytes){
         if(playerExists(uuid)){
             setBytes(uuid, Integer.valueOf(getBytes(uuid).intValue() - bytes.intValue()));
         }else{
             createPlayer(uuid);
-            removeCoins(uuid, bytes);
+            removeBytes(uuid, bytes);
         }
     }
 }

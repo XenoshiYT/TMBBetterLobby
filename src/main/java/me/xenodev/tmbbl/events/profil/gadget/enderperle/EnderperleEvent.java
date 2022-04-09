@@ -27,21 +27,24 @@ public class EnderperleEvent implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
-        if (p.getItemInHand().getType().equals(Material.ENDER_PEARL) && (e.getAction().equals(Action.RIGHT_CLICK_AIR)) && !p.isSneaking()) {
-            e.setCancelled(false);
 
-            p.getInventory().setItem(6, new ItemBuilder(Material.FIREWORK_STAR).setName("§cBitte kurz warten").build());
-            EnderPearl pearl = p.launchProjectile(EnderPearl.class);
-            pearl.setPassenger(p);
+        if(e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (p.getItemInHand().getType().equals(Material.ENDER_PEARL) && (e.getAction().equals(Action.RIGHT_CLICK_AIR)) && !p.isSneaking()) {
+                e.setCancelled(false);
 
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    p.getInventory().setItem(6, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §9Enderperle §7«").build());
-                }
-            }.runTaskLater(Main.instance, 20 * 3);
-        }else{
-            e.setCancelled(true);
+                p.getInventory().setItem(6, new ItemBuilder(Material.FIREWORK_STAR).setName("§cBitte kurz warten").build());
+                EnderPearl pearl = p.launchProjectile(EnderPearl.class);
+                pearl.setPassenger(p);
+
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        p.getInventory().setItem(6, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §9Enderperle §7«").build());
+                    }
+                }.runTaskLater(Main.instance, 20 * 3);
+            } else {
+                e.setCancelled(true);
+            }
         }
     }
 

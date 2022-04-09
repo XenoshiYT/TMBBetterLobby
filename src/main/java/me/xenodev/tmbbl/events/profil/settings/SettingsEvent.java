@@ -1,4 +1,4 @@
-package me.xenodev.tmbbl.events.profil.settings.main;
+package me.xenodev.tmbbl.events.profil.settings;
 
 import me.xenodev.tmbbl.file.SettingsFilebuilder;
 import me.xenodev.tmbbl.main.Main;
@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 
 public class SettingsEvent implements Listener {
 
@@ -34,11 +35,11 @@ public class SettingsEvent implements Listener {
         Player p = (Player) e.getWhoClicked();
         if(e.getView().getTitle().equalsIgnoreCase("§7» §6Settings §7«")){
             e.setCancelled(true);
-            if(e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) || e.getCurrentItem().getType().equals(Material.AIR)) return;
+            if(e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) || e.getCurrentItem().getType().equals(Material.AIR) || e.getCurrentItem() == null) return;
             if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §cZurücksetzen §7«")){
                 SettingsFilebuilder.setSetting(p, "Hide", false);
                 SettingsFilebuilder.setSetting(p, "Eggboost", true);
-                p.sendMessage(Main.prefix + "§7Du hast deinen Einstellungen zurückgesetzt");
+                p.sendMessage(Main.prefix + "§cDu hast deinen Einstellungen zurückgesetzt");
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Zurück §7«")) {
                 p.closeInventory();
@@ -122,23 +123,23 @@ public class SettingsEvent implements Listener {
             inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
         }
 
-        if(SettingsFilebuilder.getSetting(p, "Eggboost_self").equals(true)) {
-            inv.setItem(0, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Self §7«").setLore("§7Du kannst von anderen Spielern geboostet werden").setEnchantment(Enchantment.CHANNELING, 1).build());
-        }else if(SettingsFilebuilder.getSetting(p, "Eggboost_self").equals(false)) {
-            inv.setItem(0, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Self §7«").setLore("§7Du kannst von anderen Spielern nicht geboostet werden").build());
-        }
         if(SettingsFilebuilder.getSetting(p, "Eggboost_other").equals(true)) {
-            inv.setItem(1, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Other §7«").setLore("§7Du kannst dich selbst boosten").setEnchantment(Enchantment.CHANNELING, 1).build());
+            inv.setItem(0, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Other §7«").setLore("§7Du kannst von anderen Spielern geboostet werden").setEnchantment(Enchantment.CHANNELING, 1).setFlag(ItemFlag.HIDE_ENCHANTS).build());
         }else if(SettingsFilebuilder.getSetting(p, "Eggboost_other").equals(false)) {
-            inv.setItem(1, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Other §7«").setLore("§7Du kannst dich selbst nicht boosten").build());
+            inv.setItem(0, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Other §7«").setLore("§7Du kannst von anderen Spielern nicht geboostet werden").build());
+        }
+        if(SettingsFilebuilder.getSetting(p, "Eggboost_self").equals(true)) {
+            inv.setItem(1, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Self §7«").setLore("§7Du kannst dich selbst boosten").setEnchantment(Enchantment.CHANNELING, 1).setFlag(ItemFlag.HIDE_ENCHANTS).build());
+        }else if(SettingsFilebuilder.getSetting(p, "Eggboost_self").equals(false)) {
+            inv.setItem(1, new ItemBuilder(Material.EGG).setName("§7» §6Eggboost Self §7«").setLore("§7Du kannst dich selbst nicht boosten").build());
         }
         if(SettingsFilebuilder.getSetting(p, "Hide").equals(true)) {
-            inv.setItem(2, new ItemBuilder(Material.TOTEM_OF_UNDYING).setName("§7» §6Verstecker §7«").setLore("§7Du siehst nun §ckeine §7Spieler mehr").setEnchantment(Enchantment.CHANNELING, 1).build());
+            inv.setItem(2, new ItemBuilder(Material.TOTEM_OF_UNDYING).setName("§7» §6Verstecker §7«").setLore("§7Du siehst nun §ckeine §7Spieler mehr").setEnchantment(Enchantment.CHANNELING, 1).setFlag(ItemFlag.HIDE_ENCHANTS).build());
         }else if(SettingsFilebuilder.getSetting(p, "Hide").equals(false)) {
             inv.setItem(2, new ItemBuilder(Material.TOTEM_OF_UNDYING).setName("§7» §6Verstecker §7«").setLore("§7Du siehst nun §aalle §7Spieler wieder").build());
         }
         if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(true)) {
-            inv.setItem(3, new ItemBuilder(Material.FEATHER).setName("§7» §6Double Jump §7«").setLore("§7Du kannst doppelt springen").setEnchantment(Enchantment.CHANNELING, 1).build());
+            inv.setItem(3, new ItemBuilder(Material.FEATHER).setName("§7» §6Double Jump §7«").setLore("§7Du kannst doppelt springen").setEnchantment(Enchantment.CHANNELING, 1).setFlag(ItemFlag.HIDE_ENCHANTS).build());
         }else if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) {
             inv.setItem(3, new ItemBuilder(Material.FEATHER).setName("§7» §6Double Jump §7«").setLore("§7Du kannst nicht doppelt springen").build());
         }

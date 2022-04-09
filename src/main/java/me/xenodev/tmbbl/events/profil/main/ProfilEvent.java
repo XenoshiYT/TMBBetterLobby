@@ -23,12 +23,12 @@ public class ProfilEvent implements Listener {
                         inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                     }
 
-                    inv.setItem(12, new ItemBuilder(Material.MUSIC_DISC_PIGSTEP).setName("§7» §6Musik §7«").build());
-                    inv.setItem(14, new ItemBuilder(Material.GOLDEN_BOOTS).setName("§7» §6Spuren §7«").build());
-                    inv.setItem(19, new ItemBuilder(Material.PLAYER_HEAD).setName("§7» §6Köpfe §7«").build());
-                    inv.setItem(25, new ItemBuilder(Material.PLAYER_HEAD).setOwner(p.getName()).setName("§7» §6Freunde §7«").build());
-                    inv.setItem(31, new ItemBuilder(Material.NETHERITE_CHESTPLATE).setName("§7» §6Kleiderschrank §7«").build());
-                    inv.setItem(38, new ItemBuilder(Material.CHEST).setName("§7» §6Gadgets §7«").build());
+                    inv.setItem(12, new ItemBuilder(Material.PLAYER_HEAD).setOwnerURL("http://textures.minecraft.net/texture/9d4c9997ad46fdf900720c189720977fdee3742ab9ae9ffb00e5af9417d0454e").setName("§7» §6Köpfe §7«").build());
+                    inv.setItem(19, new ItemBuilder(Material.NETHERITE_CHESTPLATE).setName("§7» §6Kleiderschrank §7«").build());
+                    inv.setItem(38, new ItemBuilder(Material.GOLDEN_BOOTS).setName("§7» §6Spuren §7«").build());
+
+                    inv.setItem(14, new ItemBuilder(Material.CHEST).setName("§7» §6Gadgets §7«").build());
+                    inv.setItem(25, new ItemBuilder(Material.ENDER_CHEST).setName("§7» §6Shop §7«").build());
                     inv.setItem(42, new ItemBuilder(Material.REDSTONE).setName("§7» §6Settings §7«").build());
 
                     p.openInventory(inv);

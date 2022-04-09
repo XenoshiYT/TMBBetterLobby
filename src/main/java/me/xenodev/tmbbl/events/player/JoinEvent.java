@@ -1,9 +1,11 @@
 package me.xenodev.tmbbl.events.player;
 
 import me.xenodev.tmbbl.commands.specialevents.main.EventCMD;
+import me.xenodev.tmbbl.file.EventFilebuilder;
 import me.xenodev.tmbbl.file.LocationFilebuilder;
 import me.xenodev.tmbbl.file.SettingsFilebuilder;
 import me.xenodev.tmbbl.main.Main;
+import me.xenodev.tmbbl.mysql.PlayerSQL;
 import me.xenodev.tmbbl.mysql.TimeSQL;
 import me.xenodev.tmbbl.utils.player.ScoreBoardBuilder;
 import me.xenodev.tmbbl.utils.player.ScoreBoardDisplayBuilder;
@@ -31,11 +33,16 @@ public class JoinEvent implements Listener{
         p.sendMessage("§8§l―――――――――― §5§lT§deam§5§lM§dega§5§lB§dyte §8§l――――――――――");
 
         TimeSQL.createPlayer(p.getUniqueId());
+        PlayerSQL.createPlayer(p);
         ScoreBoardBuilder.setScoreboard(p);
         ScoreBoardDisplayBuilder.timerdisplay.put(p, 0);
 
-        Location loc = LocationFilebuilder.getLocation("Spawn");
-        p.teleport(loc);
+        if(LocationFilebuilder.cfg.getString("Spawn.World") != null){
+            Location loc = LocationFilebuilder.getLocation("Spawn");
+            p.teleport(loc);
+        }else{
+            p.sendMessage(Main.prefix + " §4§lDer Spawn wurde noch nicht gesetzt! Bitte den Spawn setzten mit /spawn set");
+        }
 
         StartItemBuilder.setItem(p);
         for(Player all : Bukkit.getOnlinePlayers()){
@@ -56,21 +63,20 @@ public class JoinEvent implements Listener{
         p.setFoodLevel(40);
         e.setJoinMessage("");
         p.setGameMode(GameMode.ADVENTURE);
-        p.setMaxHealth(40);
-        p.setHealth(40);
-        if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("easter")){
+        p.setLevel(2022);
+        if(EventFilebuilder.getEvent().equalsIgnoreCase("easter")){
             p.sendTitle("§aFrohe Ostern,", "§e§l" + p.getName() + "§7!", 30, 90, 30);
             p.playSound(p.getLocation(), Sound.MUSIC_DISC_WAIT, 1f, 1f);
-        }else if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("halloween")){
+        }else if(EventFilebuilder.getEvent().equalsIgnoreCase("halloween")){
             p.sendTitle("§6Happy Halloween,", "§e§l" + p.getName() + "§7!", 30, 90, 30);
             p.playSound(p.getLocation(), Sound.MUSIC_DISC_WARD, 1f, 1f);
-        }else if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("christmas")){
+        }else if(EventFilebuilder.getEvent().equalsIgnoreCase("christmas")){
             p.sendTitle("§bFrohe Weihnachten,", "§e§l" + p.getName() + "§7!", 30, 90, 30);
             p.playSound(p.getLocation(), Sound.MUSIC_DISC_FAR, 1f, 1f);
-        }else if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("newyear")){
+        }else if(EventFilebuilder.getEvent().equalsIgnoreCase("newyear")){
             p.sendTitle("§cFrohes neues Jahr,", "§e§l" + p.getName() + "§7!", 30, 90, 30);
             p.playSound(p.getLocation(), Sound.MUSIC_DISC_STRAD, 1f, 1f);
-        }else if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("none")){
+        }else if(EventFilebuilder.getEvent().equalsIgnoreCase("none")){
             p.sendTitle("§7Guten Tag,", "§e§l" + p.getName() + "§7!", 30, 90, 30);
         }
     }

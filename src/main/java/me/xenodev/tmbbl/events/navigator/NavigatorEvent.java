@@ -44,15 +44,10 @@ public class NavigatorEvent implements Listener {
                             for (int i = 9; i < 18; i++) {
                                 inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                             }
-                            ServiceInfoSnapshot bewerber1 = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("bewerber-1");
-                            Integer bi1 = ServiceInfoSnapshotUtil.getPlayers(bewerber1).size();
-                            Integer bm1 = ServiceInfoSnapshotUtil.getMaxPlayers(bewerber1);
-                            ServiceInfoSnapshot bewerber2 = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("bewerber-2");
-                            Integer bi2 = ServiceInfoSnapshotUtil.getPlayers(bewerber2).size();
-                            Integer bm2 = ServiceInfoSnapshotUtil.getMaxPlayers(bewerber2);
 
-                            inv.setItem(11, new ItemBuilder(Material.GOLDEN_HELMET).setName("§7» §eNeuling-Plots §7«").setLore("", "§7- §c§o" + bi1 + " §7/ §c§o" + bm1 + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
-                            inv.setItem(15, new ItemBuilder(Material.DIAMOND_HELMET).setName("§7» §3Azubi-Plots §7«").setLore("", "§7- §c§o" + bi2 + " §7/ §c§o" + bm2 + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
+                            inv.setItem(12, new ItemBuilder(Material.BARRIER).setName("§7» §5TryJump §7«").build());
+                            inv.setItem(14, new ItemBuilder(Material.MAGMA_CREAM).setName("§7» §6Spawn §7«").build());
+
                             p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                         }
                     }.runTaskLaterAsynchronously(Main.instance, 5L);
@@ -63,10 +58,6 @@ public class NavigatorEvent implements Listener {
                             for (int i = 18; i < 27; i++) {
                                 inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                             }
-                            ServiceInfoSnapshot lobby = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("lobby-1");
-                            Integer li = ServiceInfoSnapshotUtil.getPlayers(lobby).size();
-                            Integer lm = ServiceInfoSnapshotUtil.getMaxPlayers(lobby);
-                            inv.setItem(22, new ItemBuilder(Material.MAGMA_CREAM).setName("§7» §6Spawn §7«").setLore("", "§7- §c§o" + li + " §7/ §c§o" + lm + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
                             p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                         }
                     }.runTaskLaterAsynchronously(Main.instance, 10L);
@@ -77,14 +68,10 @@ public class NavigatorEvent implements Listener {
                             for (int i = 27; i < 36; i++) {
                                 inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
                             }
-                            ServiceInfoSnapshot tutorial = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("tbuilderserver-1");
-                            Integer ti = ServiceInfoSnapshotUtil.getPlayers(tutorial).size();
-                            Integer tm = ServiceInfoSnapshotUtil.getMaxPlayers(tutorial);
-                            ServiceInfoSnapshot bauserver = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName("bauserver-1");
-                            Integer bi = ServiceInfoSnapshotUtil.getPlayers(bauserver).size();
-                            Integer bm = ServiceInfoSnapshotUtil.getMaxPlayers(bauserver);
-                            inv.setItem(29, new ItemBuilder(Material.STONE_BRICK_SLAB).setName("§7» §aTBuilderserver §7«").setLore("", "§7- §c§o" + ti + " §7/ §c§o" + tm + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
-                            inv.setItem(33, new ItemBuilder(Material.BRICK_STAIRS).setName("§7» §2Bauserver §7«").setLore("", "§7- §c§o" + bi + " §7/ §c§o" + bm + " §7-", "", "", "§7§oDrücke auf das ITEM um zu connecten").build());
+                            inv.setItem(28, new ItemBuilder(Material.GOLDEN_HELMET).setName("§7» §eNeuling-Plots §7«").build());
+                            inv.setItem(30, new ItemBuilder(Material.DIAMOND_HELMET).setName("§7» §3Azubi-Plots §7«").build());
+                            inv.setItem(32, new ItemBuilder(Material.STONE_BRICK_SLAB).setName("§7» §aTBuilderserver §7«").build());
+                            inv.setItem(34, new ItemBuilder(Material.BRICK_STAIRS).setName("§7» §2Bauserver §7«").build());
                             p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                         }
                     }.runTaskLaterAsynchronously(Main.instance, 15L);
@@ -148,6 +135,13 @@ public class NavigatorEvent implements Listener {
                     player.getPlayerExecutor(p.getUniqueId()).connect("bauserver-1");
                 }else{
                     p.sendMessage(Main.error + "§cDer Bauserver ist für das Serverteam vorgesehen");
+                }
+            } else if(e.getCurrentItem().getType().equals(Material.FEATHER)){
+                if(p.hasPermission("tmb.tryjump")){
+                    IPlayerManager player = CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class);
+                    player.getPlayerExecutor(p.getUniqueId()).connect("tryjump-1");
+                }else{
+                    p.sendMessage(Main.error + "§cDer TryJump-Server ist für das Serverteam vorgesehen");
                 }
             }
         }

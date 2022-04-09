@@ -15,7 +15,6 @@ public class TimerBuilder {
     private static int sched2;
     private static int sched3;
     private static int sched4;
-    private static int sched5;
 
     public static void startScoreboard() {
         if (!Bukkit.getScheduler().isCurrentlyRunning(sched1)) {
@@ -26,7 +25,7 @@ public class TimerBuilder {
                         ScoreBoardBuilder.updateScoreboard(all);
                     }
                 }
-            }, 0L, 20*60);
+            }, 0L, 20L);
         }
     }
 

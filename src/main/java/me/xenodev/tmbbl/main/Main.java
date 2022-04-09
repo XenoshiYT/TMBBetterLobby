@@ -15,16 +15,17 @@ import me.xenodev.tmbbl.events.player.DoppleJumpEvent;
 import me.xenodev.tmbbl.events.player.JoinEvent;
 import me.xenodev.tmbbl.events.player.LeaveEvent;
 import me.xenodev.tmbbl.events.player.MusicMoveEvent;
-import me.xenodev.tmbbl.events.profil.friend.FriendEvent;
 import me.xenodev.tmbbl.events.profil.gadget.enderperle.EnderperleEvent;
 import me.xenodev.tmbbl.events.profil.gadget.enterhaken.EnterhakenEvent;
 import me.xenodev.tmbbl.events.profil.gadget.flugstab.FlugstabEvent;
 import me.xenodev.tmbbl.events.profil.gadget.main.GadgetEvent;
 import me.xenodev.tmbbl.events.profil.gadget.specialevents.easter.EggBombEvent;
+import me.xenodev.tmbbl.events.profil.gadget.specialevents.easter.SwitchBow;
 import me.xenodev.tmbbl.events.profil.head.HeadEvent;
 import me.xenodev.tmbbl.events.profil.main.ProfilEvent;
 import me.xenodev.tmbbl.events.profil.music.main.MusicEvent;
-import me.xenodev.tmbbl.events.profil.settings.main.SettingsEvent;
+import me.xenodev.tmbbl.events.profil.settings.SettingsEvent;
+import me.xenodev.tmbbl.events.profil.shop.ShopEvent;
 import me.xenodev.tmbbl.events.profil.trail.cloud.CloudEvent;
 import me.xenodev.tmbbl.events.profil.trail.event.christmas.SnowEvent;
 import me.xenodev.tmbbl.events.profil.trail.event.easter.ColorEvent;
@@ -36,6 +37,7 @@ import me.xenodev.tmbbl.events.profil.trail.note.NoteEvent;
 import me.xenodev.tmbbl.events.profil.trail.soulflame.SoulflameEvent;
 import me.xenodev.tmbbl.events.profil.trail.smoke.SmokeEvent;
 import me.xenodev.tmbbl.events.profil.wardrobe.WardrobeEvent;
+import me.xenodev.tmbbl.file.EventFilebuilder;
 import me.xenodev.tmbbl.mysql.MySQL;
 import me.xenodev.tmbbl.utils.nutzen.SnowBuilder;
 import me.xenodev.tmbbl.utils.nutzen.TimerBuilder;
@@ -60,8 +62,12 @@ public class Main extends JavaPlugin {
         particles_1_13 = api.getParticles_1_13();
         particles_1_8 = api.getParticles_1_8();
 
-        if(EventCMD.cfg.getString("Activ.Event").equalsIgnoreCase("christmas")){
-            new SnowBuilder();
+        if(EventFilebuilder.file.exists()) {
+            if (EventFilebuilder.getEvent().equalsIgnoreCase("christmas")) {
+                new SnowBuilder();
+            }
+        }else{
+            EventFilebuilder.setEvent("none");
         }
 
         commands();
@@ -81,6 +87,7 @@ public class Main extends JavaPlugin {
         mysql.update("CREATE TABLE IF NOT EXISTS Time(UUID VARCHAR(100),HOURS BIGINT,MINUTES INT,SECONDS INT)");
         mysql.update("CREATE TABLE IF NOT EXISTS Coins(UUID VARCHAR(100),COINS BIGINT)");
         mysql.update("CREATE TABLE IF NOT EXISTS Bytes(UUID VARCHAR(100),BYTES BIGINT)");
+        mysql.update("CREATE TABLE IF NOT EXISTS Players(UUID VARCHAR(100),NAME VARCHAR(100))");
     }
 
     private void commands() {
@@ -100,6 +107,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemEvent(), this);
         getServer().getPluginManager().registerEvents(new WeatherEvent(), this);
         getServer().getPluginManager().registerEvents(new SwitchhandEvent(), this);
+        getServer().getPluginManager().registerEvents(new DamageEvent(), this);
 
         getServer().getPluginManager().registerEvents(new NavigatorEvent(), this);
 
@@ -107,7 +115,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LeaveEvent(), this);
         getServer().getPluginManager().registerEvents(new DoppleJumpEvent(), this);
 
-        getServer().getPluginManager().registerEvents(new FriendEvent(), this);
+        getServer().getPluginManager().registerEvents(new ShopEvent(), this);
         getServer().getPluginManager().registerEvents(new GadgetEvent(), this);
         getServer().getPluginManager().registerEvents(new EggBombEvent(), this);
         getServer().getPluginManager().registerEvents(new EnterhakenEvent(), this);
@@ -117,6 +125,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ProfilEvent(), this);
         getServer().getPluginManager().registerEvents(new WardrobeEvent(), this);
         getServer().getPluginManager().registerEvents(new FlugstabEvent(), this);
+        getServer().getPluginManager().registerEvents(new SwitchBow(), this);
         getServer().getPluginManager().registerEvents(new TrailEvent(), this);
         getServer().getPluginManager().registerEvents(new CloudEvent(), this);
         getServer().getPluginManager().registerEvents(new LoveEvent(), this);

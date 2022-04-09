@@ -12,12 +12,12 @@ public class EventFilebuilder {
     public static YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
     public static void setEvent(String event){
-        cfg.set("Event", event);
+        cfg.set("Activ", event);
         save();
     }
 
     public static String getEvent(){
-        return cfg.getString("Event");
+        return cfg.getString("Activ");
     }
 
     private static void save(){

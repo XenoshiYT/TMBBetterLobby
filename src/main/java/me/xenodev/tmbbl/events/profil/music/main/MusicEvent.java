@@ -59,7 +59,7 @@ public class MusicEvent implements Listener {
         Player p = (Player) e.getWhoClicked();
         if(e.getView().getTitle().equalsIgnoreCase("§7» §6Musik §7«")){
             e.setCancelled(true);
-            if(e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) || e.getCurrentItem().getType().equals(Material.AIR)) return;
+            if(e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) || e.getCurrentItem().getType().equals(Material.AIR) || e.getCurrentItem() == null) return;
             if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §cMusik stoppen §7«")){
                 clearmusic(p);
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);

@@ -1,6 +1,5 @@
 package me.xenodev.tmbbl.events.profil.gadget.enterhaken;
 
-import me.xenodev.tmbbl.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -8,6 +7,7 @@ import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.util.Vector;
 
@@ -17,6 +17,7 @@ public class EnterhakenEvent implements Listener {
     public void onPlayerFish(PlayerFishEvent e) {
         Player p = e.getPlayer();
         FishHook h = e.getHook();
+
         if((e.getState().equals(PlayerFishEvent.State.IN_GROUND)
                 || (e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)
                 || (e.getState().equals(PlayerFishEvent.State.FAILED_ATTEMPT)))

@@ -21,7 +21,10 @@ public class DoppleJumpEvent implements Listener {
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
 
-        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) return;
+        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) {
+            p.setAllowFlight(false);
+            return;
+        }
 
         p.setAllowFlight(true);
         cooldown.put(p, false);
@@ -31,7 +34,10 @@ public class DoppleJumpEvent implements Listener {
     public void onFly(PlayerToggleFlightEvent e){
         Player p = e.getPlayer();
 
-        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) return;
+        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) {
+            p.setAllowFlight(false);
+            return;
+        }
 
         if(p.getGameMode().equals(GameMode.SURVIVAL) || p.getGameMode().equals(GameMode.ADVENTURE)){
             e.setCancelled(true);
@@ -49,7 +55,10 @@ public class DoppleJumpEvent implements Listener {
     public void onMove(PlayerMoveEvent e){
         Player p = e.getPlayer();
 
-        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) return;
+        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) {
+            p.setAllowFlight(false);
+            return;
+        }
 
         if(p.getGameMode().equals(GameMode.SURVIVAL) || p.getGameMode().equals(GameMode.ADVENTURE)) {
             if (p.isOnGround()) {
@@ -65,7 +74,10 @@ public class DoppleJumpEvent implements Listener {
     public void changeGamemode(PlayerGameModeChangeEvent e){
         Player p = e.getPlayer();
 
-        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) return;
+        if(SettingsFilebuilder.getSetting(p, "Doublejump").equals(false)) {
+            p.setAllowFlight(false);
+            return;
+        }
 
         if(p.getGameMode().equals(GameMode.SURVIVAL) || p.getGameMode().equals(GameMode.ADVENTURE)){
             p.setAllowFlight(true);

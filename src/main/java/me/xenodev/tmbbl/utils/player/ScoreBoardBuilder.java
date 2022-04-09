@@ -28,7 +28,7 @@ public class ScoreBoardBuilder {
 
         obj.getScore("§9§o").setScore(15);
         obj.getScore("§fRang").setScore(14);
-        obj.getScore(updateTeam(board, "rang", permgroup.getColor().replace("&", "§") + "§l" + permgroup.getName(), "", ChatColor.GREEN)).setScore(13);
+        obj.getScore(updateTeam(board, "rang", permgroup.getDisplay().replace("&", "§") + "§l" + permgroup.getName(), "", ChatColor.GREEN)).setScore(13);
         obj.getScore("§8§o").setScore(12);
         obj.getScore("§fCoins").setScore(11);
         obj.getScore(updateTeam(board, "coins", "§e§l" + CoinSQL.getCoins(p.getUniqueId()), "", ChatColor.YELLOW)).setScore(10);
@@ -52,7 +52,7 @@ public class ScoreBoardBuilder {
         IPermissionUser permuser = CloudNetDriver.getInstance().getPermissionManagement().getUser(p.getUniqueId());
         IPermissionGroup permgroup = CloudNetDriver.getInstance().getPermissionManagement().getHighestPermissionGroup(permuser);
 
-        obj.getScore(updateTeam(board, "rang", permgroup.getColor().replace("&", "§") + "§l" + permgroup.getName(), "", ChatColor.GREEN)).setScore(13);
+        obj.getScore(updateTeam(board, "rang", permgroup.getDisplay().replace("&", "§") + "§l" + permgroup.getName(), "", ChatColor.GREEN)).setScore(13);
         obj.getScore(updateTeam(board, "coins", "§e§l" + CoinSQL.getCoins(p.getUniqueId()), "", ChatColor.YELLOW)).setScore(10);
         obj.getScore(updateTeam(board, "bytes", "§e§l" + ByteSQL.getBytes(p.getUniqueId()), "", ChatColor.BLUE)).setScore(7);
         obj.getScore(updateTeam(board, "time", "§a§l" + TimeSQL.changeTime(p.getUniqueId()), "", ChatColor.RED)).setScore(4);

@@ -17,9 +17,6 @@ import java.util.ArrayList;
 
 public class EventCMD implements CommandExecutor {
 
-    public static File file = new File("plugins//TMBLobby", "event.yml");
-    public static YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player)sender;

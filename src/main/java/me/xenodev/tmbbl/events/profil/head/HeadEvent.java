@@ -1,5 +1,6 @@
 package me.xenodev.tmbbl.events.profil.head;
 
+import me.xenodev.tmbbl.file.BuyFilebuilder;
 import me.xenodev.tmbbl.file.SettingsFilebuilder;
 import me.xenodev.tmbbl.main.Main;
 import me.xenodev.tmbbl.utils.nutzen.ItemBuilder;
@@ -20,26 +21,31 @@ public class HeadEvent implements Listener {
         if (e.getView().getTitle().equalsIgnoreCase("§7» §aProfil §7«")) {
             if(e.getCurrentItem().getType().equals(Material.PLAYER_HEAD)){
                 if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Köpfe §7«")){
-                    e.setCancelled(true);
-                    p.closeInventory();
-                    Inventory inv = Bukkit.createInventory(null, 9*5, "§7» §6Köpfe §7«");
+                    if(BuyFilebuilder.getBuy(p, "köpfe").equals(true)) {
+                        e.setCancelled(true);
+                        p.closeInventory();
+                        Inventory inv = Bukkit.createInventory(null, 9 * 5, "§7» §6Köpfe §7«");
 
 
-                    for(int i = 27; i < 36; i++){
-                        inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
+                        for (int i = 27; i < 36; i++) {
+                            inv.setItem(i, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).build());
+                        }
+
+                        inv.setItem(0, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Clashi").setName("§7» §6Kopf von Clashi §7«").build());
+                        inv.setItem(1, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Gondii").setName("§7» §6Kopf von Gondii §7«").build());
+                        inv.setItem(2, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Malette").setName("§7» §6Kopf von Malette §7«").build());
+                        inv.setItem(3, new ItemBuilder(Material.PLAYER_HEAD).setOwner("XenoshiYT").setName("§7» §6Kopf von Xenoshi §7«").build());
+                        inv.setItem(4, new ItemBuilder(Material.PLAYER_HEAD).setOwner("The_Reaper").setName("§7» §6Kopf von Reaper §7«").build());
+
+                        inv.setItem(43, new ItemBuilder(Material.BARRIER).setName("§7» §cKopf löschen §7«").build());
+                        inv.setItem(44, new ItemBuilder(Material.ARROW).setName("§7» §6Zurück §7«").build());
+
+                        p.openInventory(inv);
+                        p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
+                    }else{
+                        p.sendMessage(Main.prefix + "§cDu musst zuerst die Köpfe freikaufen");
+                        p.closeInventory();
                     }
-
-                    inv.setItem(0, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Clashi").setName("§7» §6Kopf von Clashi §7«").build());
-                    inv.setItem(1, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Gondii").setName("§7» §6Kopf von Gondii §7«").build());
-                    inv.setItem(2, new ItemBuilder(Material.PLAYER_HEAD).setOwner("TMB_Malette").setName("§7» §6Kopf von Malette §7«").build());
-                    inv.setItem(3, new ItemBuilder(Material.PLAYER_HEAD).setOwner("XenoshiYT").setName("§7» §6Kopf von Xenoshi §7«").build());
-                    inv.setItem(4, new ItemBuilder(Material.PLAYER_HEAD).setOwner("The_Reaper").setName("§7» §6Kopf von Reaper §7«").build());
-
-                    inv.setItem(43, new ItemBuilder(Material.BARRIER).setName("§7» §cKopf löschen §7«").build());
-                    inv.setItem(44, new ItemBuilder(Material.ARROW).setName("§7» §6Zurück §7«").build());
-
-                    p.openInventory(inv);
-                    p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
                 }
             }
         }
@@ -50,7 +56,7 @@ public class HeadEvent implements Listener {
         Player p = (Player) e.getWhoClicked();
         if(e.getView().getTitle().equalsIgnoreCase("§7» §6Köpfe §7«")){
             e.setCancelled(true);
-            if(e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) || e.getCurrentItem().getType().equals(Material.AIR)) return;
+            if(e.getCurrentItem().getType().equals(Material.BLACK_STAINED_GLASS_PANE) || e.getCurrentItem().getType().equals(Material.AIR) || e.getCurrentItem() == null) return;
             if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §cKopf löschen §7«")){
                 p.getInventory().setHelmet(null);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Clashi", false);
@@ -58,7 +64,7 @@ public class HeadEvent implements Listener {
                 SettingsFilebuilder.setArmor(p, "Kopf", "Malette", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Xenoshi", false);
                 SettingsFilebuilder.setArmor(p, "Kopf", "Reaper", false);
-                p.sendMessage(Main.prefix + "§7Du hast deinen ausgewählten Kopf gelöscht");
+                p.sendMessage(Main.prefix + "§cDu hast deinen ausgewählten Kopf gelöscht");
                 p.playSound(p.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 10f, 100f);
             }else if(e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§7» §6Zurück §7«")) {
                 p.closeInventory();

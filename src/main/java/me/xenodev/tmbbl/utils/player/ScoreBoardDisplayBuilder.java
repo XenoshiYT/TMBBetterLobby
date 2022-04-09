@@ -39,16 +39,6 @@ public class ScoreBoardDisplayBuilder {
             obj.setDisplayName("§7» §dTea§5§lm§dMeg§5§la§dByt§5§le §7«");
         }else if(timerdisplay.get(p) == 13){
             obj.setDisplayName("§7» §5§lT§deam§5§lM§dega§5§lB§dyte §7«");
-        }else if(timerdisplay.get(p) == 14){
-            obj.setDisplayName("§7» §5§lT§deam§5§lM§dega §7«");
-        }else if(timerdisplay.get(p) == 15){
-            obj.setDisplayName("§7» §5§lT§deam §7«");
-        }else if(timerdisplay.get(p) == 16){
-            obj.setDisplayName("§7»  §7«");
-        }else if(timerdisplay.get(p) == 17){
-            obj.setDisplayName("§7» §5§lT§deam §7«");
-        }else if(timerdisplay.get(p) == 18){
-            obj.setDisplayName("§7» §5§lT§deam§5§lM§dega §7«");
             timerdisplay.remove(p);
             timerdisplay.put(p, 0);
         }

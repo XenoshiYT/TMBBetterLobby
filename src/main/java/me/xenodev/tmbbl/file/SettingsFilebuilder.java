@@ -12,21 +12,21 @@ public class SettingsFilebuilder {
     public static YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 
     public static void setSetting(Player p, String setting, Boolean bool){
-        cfg.set(p.getUniqueId().toString() + "." + setting, bool);
+        cfg.set(p.getUniqueId() + "." + setting, bool);
         save();
     }
 
     public static Boolean getSetting(Player p, String setting){
-        return cfg.getBoolean(p.getUniqueId().toString() + "." + setting);
+        return cfg.getBoolean(p.getUniqueId() + "." + setting);
     }
 
     public static void setArmor(Player p, String setting, String armor, Boolean bool){
-        cfg.set(p.getUniqueId().toString() + "." + setting + "." + armor, bool);
+        cfg.set(p.getUniqueId() + "." + setting + "." + armor, bool);
         save();
     }
 
     public static Boolean getArmor(Player p, String setting, String armor){
-        return cfg.getBoolean(p.getUniqueId().toString() + "." + setting + "." + armor);
+        return cfg.getBoolean(p.getUniqueId() + "." + setting + "." + armor);
     }
 
     private static void save(){

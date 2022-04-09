@@ -44,7 +44,10 @@ public class StartItemBuilder {
                 }else if(SettingsFilebuilder.getSetting(p, "Enderperle").equals(true)){
                     p.getInventory().setItem(6, new ItemBuilder(Material.ENDER_PEARL).setName("§7» §9Enderperle §7«").build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
-                }else if(SettingsFilebuilder.getSetting(p, "Enderperle").equals(false) && SettingsFilebuilder.getSetting(p, "Eggbomb").equals(false) && SettingsFilebuilder.getSetting(p, "Flugstab").equals(false) && SettingsFilebuilder.getSetting(p, "Enterhaken").equals(false)){
+                }else if(SettingsFilebuilder.getSetting(p, "Switchbow").equals(true)){
+                    p.getInventory().setItem(6, new ItemBuilder(Material.BOW).setName("§7» §9Switch Bow §7«").build());
+                    p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
+                }else if(SettingsFilebuilder.getSetting(p, "Switchbow").equals(false) && SettingsFilebuilder.getSetting(p, "Enderperle").equals(false) && SettingsFilebuilder.getSetting(p, "Eggbomb").equals(false) && SettingsFilebuilder.getSetting(p, "Flugstab").equals(false) && SettingsFilebuilder.getSetting(p, "Enterhaken").equals(false)){
                     p.getInventory().setItem(6, new ItemBuilder(Material.BARRIER).setName("§7» §cKein Gadget ausgewählt §7«").build());
                     p.playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 1f, 1f);
                 }
